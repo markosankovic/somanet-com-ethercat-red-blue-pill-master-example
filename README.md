@@ -33,3 +33,19 @@ The program will output:
     Control master by sending signal to this process:
         kill -SIGUSR1 15404 # send red pill
         kill -SIGUSR2 15404 # send blue pill
+
+Common errors
+-------------
+
+The master module outputs information about its state and events to the kernel ring buffer. These also end up in the system logs. You can get more information about EtherCAT errors with:
+
+    $ dmesg | grep EtherCAT
+
+1. PDO entry registration failed!
+
+        Pid: 15795
+        Failed to register PDO entry: No such file or directory
+        PDO entry registration failed!
+
+    Usually occurs when CONFIGURE_PDOS is set to 0 and the appropriate EEPROM is not written to a slave.
+
