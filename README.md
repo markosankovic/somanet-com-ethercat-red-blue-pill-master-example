@@ -8,13 +8,28 @@ This program sends the PDO named "Offered pill" to slave and receives the "Pill 
 How to run
 ----------
 
-    $ siitool -o eeprom.bin esi.xml
-    $ ethercat sii_write eeprom.bin
-    $ sudo service ethercat restart # restart is required after eeprom write
+The slave EtherCAT module must have the right PDO mapping. There are two ways to ensure this:
+
+1. Generate SII and write to EtherCAT EEPROM.
+
+        $ siitool -o eeprom.bin esi.xml
+        $ ethercat sii_write eeprom.bin
+        $ sudo service ethercat restart # restart is required after eeprom write
+
+2. Let the master program configure the PDO mapping by setting the value of [CONFIGURE_PDOS](https://github.com/markosankovic/somanet-com-ethercat-red-blue-pill-master-example/blob/master/somanet_com_ethercat_red_blue_pill_master_example.c#L16) define directive to 1.
+
+Compile and run:
+
     $ make
     $ ./somanet_com_ethercat_red_blue_pill_master_example
 
-Example of changing the "Offered pill" PDO value:
+The program will output:
 
-    $ kill -SIGUSR1 15404 # send red pill
-    $ kill -SIGUSR2 15404 # send blue pill
+    Pid: 15404
+    Activating master...
+    Starting timer...
+    Started.
+    Master is now sending red pill.
+    Control master by sending signal to this process:
+        kill -SIGUSR1 15404 # send red pill
+        kill -SIGUSR2 15404 # send blue pill
