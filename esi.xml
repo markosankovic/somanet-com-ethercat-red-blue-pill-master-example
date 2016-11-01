@@ -579,6 +579,7 @@
                                     <Access>ro</Access>
                                     <Category>o</Category>
                                     <PdoMapping>r</PdoMapping>
+                                    <SdoAccess>CompleteAccess</SdoAccess>
                                 </Flags>
                             </Object>
                             <Object>
@@ -593,6 +594,7 @@
                                     <Access>ro</Access>
                                     <Category>o</Category>
                                     <PdoMapping>t</PdoMapping>
+                                    <SdoAccess>CompleteAccess</SdoAccess>
                                 </Flags>
                             </Object>
                         </Objects>
@@ -627,7 +629,7 @@
                     </Entry>
                 </TxPdo>
                 <Mailbox DataLinkLayer="true">
-                    <CoE SdoInfo="true" PdoAssign="false" PdoConfig="false" PdoUpload="false" CompleteAccess="false"/>
+                    <CoE SdoInfo="true" PdoAssign="false" PdoConfig="false" PdoUpload="false" CompleteAccess="true"/>
                     <FoE/>
                 </Mailbox>
                 <Dc>
